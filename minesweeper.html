@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script defer src='minesweeper.js'></script>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Minesweeper</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+            .tile {
+                width: 50px;
+                height: 50px;
+                border: 1px solid #000;
+                /* border-left: 1px solid #000; */
+                position: relative;
+                display: inline-block;
+            }
+            /* .bottom {
+                border-bottom: 1px solid #000;
+            }
+            .right {
+                border-right: 1px solid #000;
+            } */
+
+        </style>
+    </head>
+    <body class="container">
+        <div class="page-header">
+            <h1>Minesweeper</h1>
+        </div>
+
+        <div id="grid-container"></div>
+
+        <!-- Don't change this  -->
+        <!-- <script>((doc)=>{let c=doc.getElementById("checkers");const w=50;for(let i=0;i<64;i++){let d=doc.createElement("div");d.setAttribute("class", "block");let col=(i % 8);let row=Math.floor(i / 8);d.setAttribute("style",`left:${col * w}px;top:${row * w}px`);if (col===7)d.classList.add("right");if(row===7)d.classList.add("bottom");c.append(d);}})(document)</script> -->
+        <!-- Don't change this  -->
+
+        <!-- <script src="minesweeper.js"></script> -->
+    </body>
+</html>
