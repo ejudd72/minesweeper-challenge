@@ -39,7 +39,15 @@
             makeMine();
         }
         console.log(mines);
+        
+        mines.map(current => {
+            let mine = d.getElementById(current);
+            // mine.setAttribute("style", "background-color: black");
+            mine.classList.add('mine');
+        })
     }
+
+
 
     createGrid(width, height);
     addMines(number);
