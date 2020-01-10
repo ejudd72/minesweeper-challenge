@@ -2,7 +2,7 @@
 
     let width = 10;
     let height = 2;
-    let number = 20;
+    let number = 5;
 
     let main = d.getElementById('grid-container');
 
@@ -16,41 +16,29 @@
             let tile = d.createElement("div");
             tile.setAttribute("class", "tile");
             tile.setAttribute("id", `${i}`);
-
             tile.textContent = "";
-
             main.append(tile);
         }
     }
 
     let addMines = (number) => {
-        let mines = [];
+        let mines = new Set();
 
-        for(let i = 0; i < number; i += 1){
-
-            console.log('for loop started');
-            let makeMine = () => {
-               
-                let newMine = Math.floor(Math.random() * (width * height));
-
-                mines.push(newMine);
-            
-            }
-            makeMine();
+        while (mines.size < number){ 
+            mines.add(Math.ceil(Math.random() * (width * height)));
         }
+
+        mines = Array.from(mines).sort();
+
         console.log(mines);
-        
-        mines.map(current => {
-            let mine = d.getElementById(current);
-            // mine.setAttribute("style", "background-color: black");
-            mine.classList.add('mine');
-        })
+
+        mines.forEach(current => {
+            let tile = d.getElementById(current);
+            tile.classList.add("mine-location");
+        });
     }
-
-
 
     createGrid(width, height);
     addMines(number);
-
 
 })(document)
