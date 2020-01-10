@@ -61,25 +61,27 @@
                 
                 console.log("mines = ", mines);
                 // filter through all mines currently to check whether the mine is already at that tile
-                let newMineCheck = () => mines.filter(current => {
-                   if (newMine === current){
-                       return current;
-                   } else {
-                       return [];
-                   }
-                });
+                
+                mines.push(newMine);
+                // let newMineCheck = () => mines.filter(current => {
+                //    if (newMine === current){
+                //        return current;
+                //    } else {
+                //        return [];
+                //    }
+                // });
 
-                console.log("newMineCheck = ", newMineCheck());
+                // console.log("newMineCheck = ", newMineCheck());
 
                 // newMineCheck === [] ? mines.push(newMine) : makeMine();
                 // if a check for the mines reveals the tile is already being used, run the check again
                 
                 // console.log(newMineCheck);
 
-                if (newMineCheck() === []){
-                    mines.push(newMine);
-                    // console.log(mines);
-                } 
+                // if (newMineCheck() === []){
+                //     mines.push(newMine);
+                //     // console.log(mines);
+                // } 
 
             }
             makeMine();
