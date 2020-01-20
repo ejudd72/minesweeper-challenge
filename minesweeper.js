@@ -2,7 +2,7 @@
 
     let width = 10;
     let height = 10;
-    let number = 10;
+    let number = 3;
 
     let main = d.getElementById('grid-container');
 
@@ -47,40 +47,44 @@
         let tilesWithoutMines = allTiles.filter(current => current.textContent !== "X");
 
         tilesWithoutMines.forEach(current => {
-            let value = 0;
+            let value = "*";
             // these are the tiles with a mine on them
-            let number = current.id;
+            let number = +current.id;
+
+            let rowNo = Math.ceil(number / width);
+
+            // column nunber calculated with modulus: if column is on right hand side then it will be the same as width instead. 
+            let colNo = number % width === 0 ? width : number % width;
 
             // working out values for each position relative to the chosen tile. 
-            // ternaries to make sure that there isn't a value given for those tiles on the edges of the board (otherwise a mine to the far left would be read as adjacent to a tile on the far right and vice versa) 
+            // ternaries to make sure that there isn't a value given for those tiles on the edges of the board 
 
-            let left = (number  - 1) % width === 0 ? null : (number - 1);
+            let left = colNo !== 1 ? (number - 1) : null;
 
-            let right = number  % width === 0 ? null : (+number + 1);
+            let right = colNo !== width ? (number + 1) : null;
 
-            let above = number  / 5 <= 1 ? null : (number - width);
+            let above = rowNo !== 1 ? (number - width) : null;
             
-            let topLeft = number  / 5 <= 1 ? null : (
-                (number  - 1) % width === 0 ? null : (number - width) - 1);
+            let below = number + width;
 
-            let topRight =number / 5 <= 1 ? null : (
-               number % width === 0 ? null : (number - width) + 1);
+            // **** 
+            let topLeft = left - width;
 
-            let below = (+number + width);
+            let topRight = right - width;
+  
+            let bottomLeft = left + width;
             
-            let bottomLeft =  (number  - 1) % width === 0 ? null : (+number + width) - 1;
-            
-            let bottomRight =number % width === 0 ? null : (+number + width) + 1;
-
+            let bottomRight = right + width;
+           
             let surrounding = [topLeft, above, topRight, left, right, bottomLeft, below, bottomRight];
 
-            let surroundingTiles = surrounding.filter(current => current > 0);
+            let surroundingTiles = surrounding.filter(current => current );
 
-            console.log('tile: ', number, "surrounding: ", surroundingTiles);
 
             // iterate through all the surrounding tiles for this particular tile. 
             let mineMatches = surroundingTiles.map(current => {
                 // only return the mines where the surrounding tile matches one of the tiles with a mine on it. 
+
                 return tilesWithMines.filter(mine => current === +mine) > 1;
                 /// filter through this array to only give true values (otherwise we get an array of true false true false etc..)
             }).filter(current => current);
