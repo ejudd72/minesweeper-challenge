@@ -12,7 +12,8 @@ This programme takes 3 parameters, height of board, width of board and number of
 I created this programme using Javascript in the DOM. This was because creating a grid in this way is familiar to a challenge I've tried before so I would have a starting place.
 I split this challenge into 3 different stages, or larger functions. This was so that I could test each one works before moving to the next.
 - Creating a grid.
-- Generating a random list of mines and plotting them in the grid - plotting the tiles surrounding each mine
+- Generating a random list of mines and plotting them in the grid
+- plotting the tiles surrounding each mine
 
 ## Decisions:
 ### Creating the grid:
